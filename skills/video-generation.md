@@ -13,8 +13,8 @@ Use this skill for rendering comic scenes, chapter videos, hooks, and merged vid
 ## Short or long video detection
 
 - Read the actual audio duration before rendering.
-- Compare the duration with the project's configurable `short_max_seconds` value.
-- Classify the video as `short` when the duration is at or below the threshold; otherwise classify it as `long`.
+- Classify the video as `short` when the audio duration is less than `180` seconds.
+- Classify the video as `long` when the audio duration is equal to or greater than `180` seconds.
 - Store the detected type and duration in the chapter metadata so the UI and renderer use the same decision.
 - Allow an explicit user override when the automatic classification is not suitable.
 - Generate `short_timeline.md` for `short` videos and `timeline.md` for `long` videos.
@@ -23,15 +23,7 @@ Use this skill for rendering comic scenes, chapter videos, hooks, and merged vid
 
 Example project setting:
 
-```json
-{
-  "video_rules": {
-    "short_max_seconds": 90
-  }
-}
-```
-
-The renderer may use different presets for each type, but the classification must come from the audio duration unless the user overrides it.
+The renderer may use different presets for each type, but the classification must come from the audio duration unless the user overrides it. The default Short limit is fixed at 180 seconds.
 
 ## Identical consecutive images
 

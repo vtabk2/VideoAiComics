@@ -10,6 +10,7 @@ VideoAiComics/
 │  └─ logo-chinh.png
 ├─ skills/
 │  ├─ image-generation.md
+│  ├─ audio-generation.md
 │  └─ video-generation.md
 ├─ web-ui/
 ├─ run-web-editor.bat
@@ -17,18 +18,23 @@ VideoAiComics/
    └─ <ten-bo-truyen>/
       ├─ series.json
       ├─ docs/
+      │  └─ <chapter-id>/
+      │     └─ <chapter-id>.txt
       ├─ characters/
       │  └─ <character-id>/
       │     ├─ reference.png
       │     └─ states/
       ├─ backgrounds/
       ├─ music/
+      ├─ voice.json
       ├─ thumbnail/
       ├─ content/
       ├─ merge-jobs/
       └─ chapters/
          └─ <chapter-id>/
             ├─ audio.mp3
+            ├─ audio-script.md
+            ├─ audio-script-clean.txt
             ├─ scenes.json
             ├─ timeline.md
             ├─ short_timeline.md
@@ -42,7 +48,44 @@ VideoAiComics/
 
 `logo/` nằm ngoài project và dùng chung cho mọi bộ truyện. `skills/` chứa hướng dẫn runtime cho AI tạo ảnh và video; quy tắc bắt buộc đọc skill được ghi trong [AGENTS.md](AGENTS.md).
 
-`docs/` nằm bên trong từng project và chứa các file text đầu vào, là nguồn nội dung để tạo chapter, cảnh và lời thoại.
+`docs/` nằm bên trong từng project. Mỗi chapter có một thư mục riêng chứa text gốc tại `docs/<chapter-id>/<chapter-id>.txt`; tên file luôn gắn với chapter để dễ tìm và quản lý.
+
+## Quy trình từ text đến video
+
+1. Người dùng đưa file text truyện vào `docs/<chapter-id>/<chapter-id>.txt`.
+2. Giao diện đọc text gốc và cho chọn phần cần làm thành chapter.
+3. Hệ thống tạo `audio-script.md` từ text gốc, gồm lời dẫn, lời thoại, người nói, cảm xúc và ngắt nghỉ.
+4. Người dùng kiểm tra/chỉnh sửa kịch bản đọc audio.
+5. Hệ thống tạo `audio-script-clean.txt`, là bản sạch để người đọc hoặc TTS sử dụng.
+6. Hệ thống tạo bản tóm tắt và chia nội dung thành các cảnh.
+7. Hệ thống đối chiếu cảnh với audio của chapter nếu audio đã có.
+8. AI đọc skill phù hợp để tạo hoặc chọn nhân vật, trạng thái, background, ảnh cảnh và hook.
+9. Hệ thống tạo `short_timeline.md` hoặc `timeline.md` theo thời lượng audio.
+10. Người dùng xem preview, chỉnh timeline nếu cần và render video chapter.
+11. Video chapter được lưu vào output; các chapter có thể được chọn để ghép thành video tổng hợp.
+
+## Cảm xúc giọng đọc
+
+`audio-script.md` giữ các chỉ dẫn cảm xúc riêng với nội dung cần đọc. Ví dụ:
+
+```text
+[NARRATOR][emotion=tense][pace=fast]
+Cánh cửa từ từ mở ra.
+
+[NHAN_VAT_A][emotion=angry][volume=high]
+Ngươi đã lừa ta!
+
+[pause=0.6s]
+```
+
+Hệ thống xử lý theo khả năng của engine TTS:
+
+- Nếu TTS hỗ trợ emotion hoặc SSML, chuyển các tag thành tham số hoặc SSML.
+- Nếu TTS không hỗ trợ, chia script thành các đoạn theo cảm xúc, tạo từng đoạn với preset phù hợp rồi nối lại.
+- `audio-script-clean.txt` chỉ chứa phần lời cần đọc; tag cảm xúc không được đọc thành tiếng.
+- Cấu hình giọng mặc định và mapping nhân vật nằm trong `voice.json` của project.
+
+File trong `docs/` là nguồn gốc và không bị sửa trong quá trình xử lý. Các bản tóm tắt, cảnh và timeline là dữ liệu làm việc trong thư mục chapter.
 
 ## Giao diện sử dụng
 
@@ -104,10 +147,10 @@ Tên hiển thị và Project ID được lưu riêng để giao diện vẫn hi
 
 ## Timeline
 
-Hệ thống đọc thời lượng audio và so sánh với `short_max_seconds` trong cấu hình project:
+Hệ thống đọc thời lượng audio và phân loại theo quy tắc cố định:
 
-- Short: tạo `short_timeline.md`.
-- Video dài: tạo `timeline.md`.
+- Audio dưới `180` giây (3 phút): tạo `short_timeline.md`.
+- Audio từ `180` giây trở lên: tạo `timeline.md`.
 
 Timeline chứa thứ tự cảnh, thời lượng, speaker focus, chuyển động, phụ đề, nhạc và hiệu ứng.
 

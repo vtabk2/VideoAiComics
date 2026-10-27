@@ -13,9 +13,9 @@ If there is no `.codegraph/` directory, skip CodeGraph entirely — indexing is 
 
 ## Runtime AI skills
 
-The `skills/` directory contains instructions for AI content generation. Before creating any image or video:
+The `skills/` directory contains instructions for AI content generation. Before creating any image, audio, or video:
 
-1. Identify the task type, such as character, background, hook, thumbnail, or video.
+1. Identify the task type, such as character, background, hook, thumbnail, voice, or video.
 2. Read the relevant skill files from `skills/` before preparing the prompt.
 3. Apply those instructions together with the chapter's prompt and project settings.
 4. Save the final prompt and generated assets in the correct project or chapter directory.
