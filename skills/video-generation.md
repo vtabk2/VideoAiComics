@@ -23,6 +23,15 @@ The current project render format is horizontal `16:9`; read `series.json` as th
 4. Keep narration clear above music and sound effects; duck background audio during dialogue.
 5. Preserve the project's resolution, aspect ratio, frame rate, visual style, and color treatment.
 
+## Intro video
+
+- Render the chapter video completely first, including its audio, scenes, subtitles, hook, and other configured content.
+- Only after the rendered video is complete, check the repository-root `intro/` directory for a video file.
+- If a valid intro video exists, prepend it to the completed rendered video and keep the intro before all chapter content.
+- If `intro/` is missing or contains no valid video, keep the completed rendered video unchanged.
+- Do not fail the render only because the optional `intro/` directory or its video is absent.
+- Keep the intro and completed video compatible in resolution, aspect ratio, frame rate, video codec, and audio format before concatenation; normalize them when needed.
+
 ## Character state switching
 
 - Use `upperbody` cutouts for speaking, narration reactions, speaker focus, and close emotional beats.
