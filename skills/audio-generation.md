@@ -19,4 +19,4 @@ Use this skill when turning `audio-script.md` into spoken audio.
 - Keep the character voice mapping from `voice.json` consistent across chapters.
 - Do not read control tags aloud.
 - Preserve pauses and dialogue order; do not silently drop a segment.
-- Save intermediate segments and the final `audio.mp3` in the chapter directory.
+- Save intermediate segments and the final audio file in the chapter directory. WAV is preferred as the editing master; MP3 is optional for delivery. Store the actual path, format, and duration in chapter metadata under `audio_file`, `audio_format`, and `duration_seconds`.

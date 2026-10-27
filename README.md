@@ -36,7 +36,7 @@ VideoAiComics/
       ├─ merge-jobs/
       └─ chapters/
          └─ <chapter-id>/
-            ├─ audio.mp3
+            ├─ audio.wav (hoặc audio.mp3)
             ├─ audio-script.md
             ├─ audio-script-clean.txt
             ├─ scenes.json
