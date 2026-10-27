@@ -6,6 +6,10 @@ Use this skill for all images used in the comic video, including characters, bac
 
 - Follow the visual style, color palette, aspect ratio, and quality settings defined by the project.
 - Keep recurring characters consistent across chapters: face, hair, clothing, body shape, age, colors, and distinctive accessories.
+- Treat every project character as an original fictional character, not a real person.
+- Do not use names, likenesses, identities, or exact-face recreation of real people or public figures in prompts.
+- Use reference images only for fictional design, visual style, clothing, pose, composition, or color; describe the character by visible traits instead of identity.
+- If a reference may resemble a real person, avoid identity-preservation wording and add that the character is fictional and must not resemble any real person.
 - When creating character states, preserve the same character design and generate reusable transparent assets for neutral, talking, and required emotions or poses.
 - For recurring characters, also read and follow `skills/character-generation.md`.
 - Keep recurring locations and props consistent unless the scene explicitly changes them.

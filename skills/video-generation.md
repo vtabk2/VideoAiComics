@@ -2,6 +2,19 @@
 
 Use this skill for rendering comic scenes, chapter videos, hooks, and merged videos.
 
+The current project render format is horizontal `16:9`; read `series.json` as the source of truth if another project uses a different format.
+
+## Quy tắc prompt tạo video
+
+- Không dùng tên riêng của nhân vật trong prompt video.
+- Dùng vai trò, vị trí trong khung hình và đặc điểm nhận diện thay cho tên, ví dụ: `người phụ nữ ở tiền cảnh với tóc bob đen và kẹp tóc đỏ sẫm`.
+- Prompt phải nói rõ nhân vật nào đang thực hiện hành động để tránh chuyển hành động sang người khác.
+- Xác định tất cả nhân vật là nhân vật hư cấu nguyên bản; không dùng người thật, người nổi tiếng, tên riêng, likeness, identity hoặc yêu cầu tái tạo khuôn mặt chính xác.
+- Với image-to-video, chỉ yêu cầu giữ thiết kế hư cấu, trang phục, vị trí và bố cục từ ảnh đầu vào; không yêu cầu giữ danh tính khuôn mặt của người thật.
+- Nếu ảnh tham chiếu có thể giống người thật, dùng mô tả ngoại hình trực quan và ghi rõ nhân vật không dựa trên người thật.
+- Video hook mặc định dài đúng `8 giây`, trừ khi người dùng yêu cầu thời lượng khác.
+- Với video hook, ưu tiên một shot liên tục, chuyển động nhẹ và không tự sinh chữ, phụ đề, logo hoặc watermark.
+
 ## Priorities
 
 1. Keep narration, scene timing, dialogue, and subtitles synchronized.
@@ -12,9 +25,35 @@ Use this skill for rendering comic scenes, chapter videos, hooks, and merged vid
 
 ## Character state switching
 
-- Character cutouts used in the same scene must use the same canvas, scale, crop, and anchor point.
-- Keep eyes, head, and shoulders aligned when switching between `neutral`, `talking`, and emotional states.
+- Use `upperbody` cutouts for speaking, narration reactions, speaker focus, and close emotional beats.
+- Use `fullbody` cutouts for walking, entering, leaving, gestures, and transitions between locations.
+- Character cutouts used within the same asset family must use the same canvas, scale, crop, and anchor point.
+- Anchor `upperbody` by the lower torso/bottom edge; anchor `fullbody` by the feet baseline.
+- Keep eyes, head, and shoulders aligned for `upperbody`; do not use hair height as the anchor.
 - Normalize or align cutouts before rendering; otherwise a state change can look like a visual jump.
+
+## Making expressions stand out
+
+- Put the speaking character's aligned `upperbody` cutout on a foreground layer above the background.
+- Increase the active speaker scale slightly, normally around 105–112%, with a short eased zoom instead of an abrupt jump.
+- Raise local brightness or contrast on the active speaker and reduce the emphasis of other characters/background layers slightly.
+- Match the cutout state to the text emotion: `talking` for dialogue, `happy` for cheerful lines, `sad` for vulnerable lines, `angry` for confrontation, and `surprised` for reveals.
+- Use a small pop, head movement, or restrained shake only when the emotion supports it; keep the face readable.
+- Keep the cutout visible long enough for the expression to register, especially on mobile screens.
+- When the same image remains active, do not reset zoom or add a transition.
+
+Example scene metadata:
+
+```json
+{
+  "speaker": "tong-nhan-nhan",
+  "emotion": "angry",
+  "character_state": "upperbody/angry-v02.png",
+  "speaker_focus": true,
+  "focus_scale": 1.08,
+  "focus_motion": "subtle-shake"
+}
+```
 
 ## Short or long video detection
 

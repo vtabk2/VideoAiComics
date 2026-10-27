@@ -26,6 +26,8 @@ VideoAiComics/
       │  └─ <character-id>/
       │     ├─ reference.png
       │     └─ states/
+      │        ├─ upperbody/
+      │        └─ fullbody/
       ├─ backgrounds/
       ├─ music/
       ├─ voice.json
@@ -125,6 +127,8 @@ Tên hiển thị và Project ID được lưu riêng để giao diện vẫn hi
 
 Project mẫu này đang khóa phong cách `photorealistic-cinematic-lifestyle`. Reference nhân vật đang dùng là `characters/character-reference-sheet-v02.png`; mọi trạng thái và cảnh mới phải bám theo reference này.
 
+Toàn bộ video của project dùng khung ngang `16:9`, được cấu hình trong `series.json`. Ảnh cảnh, hook, thumbnail và video đầu ra phải giữ cùng tỷ lệ này; các cutout nhân vật trong suốt vẫn giữ canvas riêng theo từng nhóm asset.
+
 ## Cảnh và asset
 
 `scenes.json` mô tả nội dung, nhân vật, trạng thái, lời thoại, thời lượng và ảnh của từng cảnh. ID cảnh không phụ thuộc thứ tự để có thể chèn cảnh mà không phải đổi tên file.
@@ -175,6 +179,10 @@ Timeline chứa thứ tự cảnh, thời lượng, speaker focus, chuyển đ�
 ## Speaker focus
 
 Khi nhân vật nói, hệ thống có thể đưa nhân vật đó lên trước, zoom nhẹ và giảm độ nổi của các nhân vật khác. Các trạng thái nhân vật được lưu trong thư mục riêng của từng nhân vật để tái sử dụng giữa các chapter.
+
+Để biểu cảm nổi bật, cutout `upperbody` của người nói được đưa lên lớp trước, phóng to nhẹ và tăng độ nổi; các nhân vật khác giảm nhấn. Chuyển động phải vừa đủ để thấy biểu cảm mà không làm người xem mất tập trung.
+
+Asset `upperbody` được neo theo mép dưới của phần thân; asset `fullbody` được neo theo đường chân. Khi render, chỉ thay đổi vị trí trái/giữa/phải và scale theo cảnh, không căn theo đỉnh tóc.
 
 ## Hook và ghép video
 
