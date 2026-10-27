@@ -5,6 +5,10 @@ Use this skill when turning `audio-script.md` into spoken audio.
 ## Rules
 
 - Keep dialogue text separate from emotion and performance metadata.
+- Infer an initial emotion from narration context, dialogue wording, punctuation, and surrounding actions.
+- Normalize inferred emotions to the available character states, such as `neutral`, `talking`, `happy`, `sad`, `angry`, and `surprised`.
+- Prefer explicit emotion annotations over automatic inference; use scene context over isolated keywords.
+- Fall back to `neutral` when the text does not provide enough evidence.
 - When adapting source text, remove repeated descriptions, filler conversation, and details that do not affect plot, character motivation, cause-and-effect, or payoff.
 - Preserve important events, character relationships, emotional turns, clues, and dialogue needed to understand the story.
 - Do not remove a detail if it is later used as evidence, a reveal, a joke, or a setup for the ending.

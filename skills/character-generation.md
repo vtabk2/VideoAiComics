@@ -15,6 +15,9 @@ Use this skill for recurring characters in the comic video.
 - Create a reference sheet before generating scene images.
 - Keep face, hair, body proportions, skin tone, clothing details, and accessories consistent.
 - Create transparent PNG assets for reusable states such as `neutral`, `talking`, `happy`, `sad`, `angry`, and `surprised`.
+- Keep every state on the same canvas size, crop, camera distance, body framing, scale, and anchor point.
+- Keep the eyes, head, shoulders, and torso aligned across states so switching cutouts does not jump.
+- Normalize generated cutouts before use; do not rely on the image model to produce identical pixel bounds.
 - Include front and three-quarter views when the character appears frequently.
 - Save the prompt and reference information with the character asset.
 

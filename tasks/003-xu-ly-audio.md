@@ -12,6 +12,8 @@
 - Tạo `audio-script-clean.txt` làm bản sạch cho người đọc hoặc TTS.
 - Lược bỏ chi tiết lặp hoặc không liên quan nhưng giữ tình tiết chính, động cơ, manh mối và đoạn kết.
 - Chuyển cảm xúc, tốc độ, âm lượng và khoảng ngắt thành tham số cho TTS.
+- Phân tích câu chữ và ngữ cảnh để đề xuất cảm xúc cho từng lời thoại.
+- Chuẩn hóa cảm xúc về các trạng thái nhân vật đang có; dùng `neutral` nếu không đủ dữ liệu.
 - Hỗ trợ tách đoạn theo cảm xúc khi engine TTS không hỗ trợ emotion trực tiếp.
 - Tạo bản tóm tắt và danh sách cảnh làm dữ liệu làm việc.
 - Đọc thời lượng audio và đối chiếu với các cảnh.

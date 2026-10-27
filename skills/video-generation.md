@@ -10,6 +10,12 @@ Use this skill for rendering comic scenes, chapter videos, hooks, and merged vid
 4. Keep narration clear above music and sound effects; duck background audio during dialogue.
 5. Preserve the project's resolution, aspect ratio, frame rate, visual style, and color treatment.
 
+## Character state switching
+
+- Character cutouts used in the same scene must use the same canvas, scale, crop, and anchor point.
+- Keep eyes, head, and shoulders aligned when switching between `neutral`, `talking`, and emotional states.
+- Normalize or align cutouts before rendering; otherwise a state change can look like a visual jump.
+
 ## Short or long video detection
 
 - Read the actual audio duration before rendering.

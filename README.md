@@ -123,9 +123,22 @@ Thư mục:      projects/de-men-phieu-luu-ky/
 
 Tên hiển thị và Project ID được lưu riêng để giao diện vẫn hiển thị đúng tên tiếng Việt.
 
+Project mẫu này đang khóa phong cách `photorealistic-cinematic-lifestyle`. Reference nhân vật đang dùng là `characters/character-reference-sheet-v02.png`; mọi trạng thái và cảnh mới phải bám theo reference này.
+
 ## Cảnh và asset
 
 `scenes.json` mô tả nội dung, nhân vật, trạng thái, lời thoại, thời lượng và ảnh của từng cảnh. ID cảnh không phụ thuộc thứ tự để có thể chèn cảnh mà không phải đổi tên file.
+
+Khi xử lý text, hệ thống phân tích lời thoại và ngữ cảnh để đề xuất biểu cảm cho nhân vật. Chỉ dẫn cảm xúc viết rõ trong script được ưu tiên; nếu không có, hệ thống dùng hành động, từ ngữ và dấu câu để suy luận. Kết quả được lưu vào cảnh để chọn đúng cutout:
+
+```json
+{
+  "speaker": "tong-nhan-nhan",
+  "emotion": "angry",
+  "character_state": "characters/tong-nhan-nhan/states/angry-v01.png",
+  "speaker_focus": true
+}
+```
 
 Phong cách hình ảnh là cấu hình riêng của từng project trong `series.json` hoặc file style của project. Skill chỉ cung cấp quy tắc tạo asset nhất quán, không ép mọi truyện dùng cùng một phong cách.
 
