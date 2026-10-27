@@ -5,6 +5,10 @@ Use this skill when turning `audio-script.md` into spoken audio.
 ## Rules
 
 - Keep dialogue text separate from emotion and performance metadata.
+- When adapting source text, remove repeated descriptions, filler conversation, and details that do not affect plot, character motivation, cause-and-effect, or payoff.
+- Preserve important events, character relationships, emotional turns, clues, and dialogue needed to understand the story.
+- Do not remove a detail if it is later used as evidence, a reveal, a joke, or a setup for the ending.
+- Keep the adaptation concise enough for audio while preserving a coherent beginning, escalation, confrontation, and ending hook.
 - Apply the emotion, pace, volume, emphasis, and pause instructions for each segment.
 - Prefer the TTS engine's native emotion or SSML support when available.
 - If native emotion is unavailable, synthesize separate emotion segments and concatenate them in script order.

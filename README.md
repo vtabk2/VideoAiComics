@@ -11,6 +11,8 @@ VideoAiComics/
 ├─ skills/
 │  ├─ image-generation.md
 │  ├─ audio-generation.md
+│  ├─ character-generation.md
+│  ├─ hook-generation.md
 │  └─ video-generation.md
 ├─ web-ui/
 ├─ run-web-editor.bat
@@ -82,6 +84,7 @@ Hệ thống xử lý theo khả năng của engine TTS:
 
 - Nếu TTS hỗ trợ emotion hoặc SSML, chuyển các tag thành tham số hoặc SSML.
 - Nếu TTS không hỗ trợ, chia script thành các đoạn theo cảm xúc, tạo từng đoạn với preset phù hợp rồi nối lại.
+- Khi biên tập từ text gốc, có thể lược bỏ mô tả lặp, hội thoại đệm và chi tiết không ảnh hưởng đến diễn biến; phải giữ lại tình tiết, động cơ, manh mối và chi tiết phục vụ đoạn kết.
 - `audio-script-clean.txt` chỉ chứa phần lời cần đọc; tag cảm xúc không được đọc thành tiếng.
 - Cấu hình giọng mặc định và mapping nhân vật nằm trong `voice.json` của project.
 
@@ -123,6 +126,8 @@ Tên hiển thị và Project ID được lưu riêng để giao diện vẫn hi
 ## Cảnh và asset
 
 `scenes.json` mô tả nội dung, nhân vật, trạng thái, lời thoại, thời lượng và ảnh của từng cảnh. ID cảnh không phụ thuộc thứ tự để có thể chèn cảnh mà không phải đổi tên file.
+
+Phong cách hình ảnh là cấu hình riêng của từng project trong `series.json` hoặc file style của project. Skill chỉ cung cấp quy tắc tạo asset nhất quán, không ép mọi truyện dùng cùng một phong cách.
 
 Ảnh mới của cùng một cảnh tăng phiên bản (`v01`, `v02`, ...), không ghi đè ảnh cũ. Thứ tự cảnh do trường `order` quyết định.
 
