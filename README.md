@@ -5,15 +5,18 @@
 ## Cấu trúc thư mục
 
 ```text
-D:\\VideoAiComics/
+VideoAiComics/
 ├─ logo/
 │  └─ logo-chinh.png
 ├─ skills/
 │  ├─ image-generation.md
 │  └─ video-generation.md
+├─ web-ui/
+├─ run-web-editor.bat
 └─ projects/
    └─ <ten-bo-truyen>/
       ├─ series.json
+      ├─ docs/
       ├─ characters/
       │  └─ <character-id>/
       │     ├─ reference.png
@@ -38,6 +41,41 @@ D:\\VideoAiComics/
 ```
 
 `logo/` nằm ngoài project và dùng chung cho mọi bộ truyện. `skills/` chứa hướng dẫn runtime cho AI tạo ảnh và video; quy tắc bắt buộc đọc skill được ghi trong [AGENTS.md](AGENTS.md).
+
+`docs/` nằm bên trong từng project và chứa các file text đầu vào, là nguồn nội dung để tạo chapter, cảnh và lời thoại.
+
+## Giao diện sử dụng
+
+VideoAiComics được sử dụng qua một Web UI local. Giao diện dự kiến gồm các khu vực:
+
+- Project và chapter.
+- Thư viện asset.
+- Cảnh và timeline.
+- Hook, preview và render.
+- Theo dõi trạng thái render.
+- Ghép nhiều video chapter.
+
+Kiến trúc giao diện tham khảo mô hình Web UI trong `D:\Android\CodeTA\GenerateVideo`, gồm Node.js server, HTML, JavaScript, CSS và file chạy trên Windows. Giao diện của VideoAiComics sẽ dùng dữ liệu và quy trình riêng trong README này.
+
+## Quy tắc đặt tên project
+
+Tên hiển thị được phép giữ tiếng Việt có dấu, nhưng ID và thư mục project phải dùng dạng slug:
+
+- Chuyển thành chữ thường.
+- Bỏ dấu tiếng Việt.
+- Thay khoảng trắng và ký tự không hợp lệ bằng một dấu `-`.
+- Gộp nhiều dấu `-` liên tiếp thành một dấu.
+- Không để dấu `-` ở đầu hoặc cuối.
+
+Ví dụ:
+
+```text
+Tên hiển thị: Dế Mèn phiêu lưu ký
+Project ID:   de-men-phieu-luu-ky
+Thư mục:      projects/de-men-phieu-luu-ky/
+```
+
+Tên hiển thị và Project ID được lưu riêng để giao diện vẫn hiển thị đúng tên tiếng Việt.
 
 ## Cảnh và asset
 

@@ -8,7 +8,7 @@ Xây dựng ứng dụng tạo video truyện tranh từ truyện audio, hỗ tr
 
 | STT | Tên kế hoạch | Trạng thái |
 |---:|---|---|
-| 1 | <a href="tasks/001-quan-ly-project.md" style="color: #2563eb">Quản lý project</a> | `todo` |
+| 1 | <a href="tasks/001-quan-ly-project.md" style="color: #2563eb">Giao diện và quản lý project</a> | `todo` |
 | 2 | <a href="tasks/002-quan-ly-asset.md" style="color: #2563eb">Quản lý asset</a> | `todo` |
 | 3 | <a href="tasks/003-xu-ly-audio.md" style="color: #2563eb">Xử lý audio</a> | `todo` |
 | 4 | <a href="tasks/004-quan-ly-canh.md" style="color: #2563eb">Quản lý cảnh</a> | `todo` |
