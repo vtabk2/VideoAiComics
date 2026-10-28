@@ -17,8 +17,8 @@ The current project render format is horizontal `16:9`; read `series.json` as th
 
 ## Priorities
 
-1. Keep narration, scene timing, dialogue, and subtitles synchronized.
-2. Compose each scene from the background, character layers, speaker focus, effects, and subtitles.
+1. Keep narration, scene timing, and dialogue synchronized.
+2. Compose each scene from the background, character layers, speaker focus, and effects.
 3. Keep motion subtle: use controlled zoom, pan, and small effects instead of abrupt movement.
 4. Keep narration clear above music and sound effects; duck background audio during dialogue.
 5. Preserve the project's resolution, aspect ratio, frame rate, visual style, and color treatment.
@@ -73,7 +73,7 @@ Example scene metadata:
 - Allow an explicit user override when the automatic classification is not suitable.
 - Generate `short_timeline.md` for `short` videos and `timeline.md` for `long` videos.
 - Use only the timeline matching the detected or manually overridden type; do not silently mix both files.
-- The timeline must define scene order, duration, speaker focus, motion, subtitles, music, and sound effects.
+- The timeline must define scene order, duration, speaker focus, motion, music, and sound effects.
 
 Example project setting:
 
@@ -97,5 +97,4 @@ The renderer may use different presets for each type, but the classification mus
 ## Validation before export
 
 - Verify that every scene has a valid image, duration, and audio timing.
-- Verify that subtitles do not cover important faces or leave the safe area.
 - Verify that the final video has continuous audio and no empty scene.
